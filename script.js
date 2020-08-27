@@ -21,8 +21,7 @@ function lengthCheck() {
   }
 }
 
-//Function to concat Upper to selected Critieria array
-
+//Function to push selected input to selectCriteria array
 function inputCheck(inputType, typeArray) {
   if (inputType) {
     selectedCriteria.push(typeArray);
@@ -33,8 +32,7 @@ function inputCheck(inputType, typeArray) {
 // Function that generates the password 
 function generatePassword() {
 
-  // checks confirm values to be true. adds to selectedCriteria 
-
+  // Upon click, ask for inputs 
   inputLength = prompt("Please enter password length");
   lengthCheck();
   inputUpper = confirm("Would you like Uppercase Letters?");
@@ -42,6 +40,7 @@ function generatePassword() {
   inputSpecial = confirm("Would you like Special Characters?");
   inputNum = confirm("Would you like Numbers?");
 
+  // checks if user did not select any requirements and then repeats prompts 
   while (!inputUpper && !inputLower && !inputSpecial && !inputNum ) {
     alert("You need to select some criteria")
     inputUpper = confirm("Would you like Uppercase Letters?");
@@ -51,15 +50,14 @@ function generatePassword() {
   }
 
 
-  // Run all the functions to determine what criteria we need to include
+  // call inputCheck function for all input types 
+  inputCheck(inputUpper, upperChar);
+  inputCheck(inputLower, lowerChar);
+  inputCheck(inputSpecial, specialChar);
+  inputCheck(inputNum, numChar);
 
-inputCheck(inputUpper, upperChar);
-inputCheck(inputLower, lowerChar);
-inputCheck(inputSpecial, specialChar);
-inputCheck(inputNum, numChar);
 
-
-  
+  //flatten selectedCriteria into one array 
   selectedCriteria = selectedCriteria.flat(1);
 
   // Password is currently blank! We need to make a better one
@@ -75,17 +73,13 @@ inputCheck(inputNum, numChar);
 
 
 // Writes the password to the text field in the HTML
-function writePassword() {
-  // check critiera here? or even get rid of the firstclick function and check it here 
-
+function writePassword() { 
 
   const password = generatePassword();
   const passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 }
-
-// Main Process
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);

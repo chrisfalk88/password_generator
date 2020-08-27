@@ -1,9 +1,16 @@
 # password_generator
 Javascript Exercise to produce a password generator
 
-# Author : Chris 
+# Author : Chris Falk
 
-## Psuedocode 
+## Project Description 
+Given the index and css files, the project task was to create the javascript required for for custom password customization. Upon clicking generate password button, a series of prompts for password length and requirements will follow and then display in the text field. this can be repeat as many times as needed, by button click, without needing to refresh the page. 
+
+
+## Additional Credits
+Hannah Folk, BCS tutor for assisting with peer review and constructive feedback 
+
+### Psuedocode 
 variables to create 
     array of upper case chars 
     array of lower case chars 
